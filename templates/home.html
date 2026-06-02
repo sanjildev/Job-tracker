@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Job Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <h1>Job Tracker Dashboard</h1>
@@ -31,6 +32,7 @@
     <option value="Offer">Offer</option>
     <option value="Rejected">Rejected</option>
 </select>
+<canvas id="jobChart" width="400" height="200"></canvas>
     <a href="/add">Add New Job</a>
 
     <table>
@@ -88,6 +90,18 @@ document.getElementById('filter').addEventListener('change', function() {
             row.style.display = 'none';
         }
     });
+});
+const ctx = document.getElementById('jobChart').getContext('2d');
+const jobChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Applied', 'Interview', 'Offer', 'Rejected'],
+        datasets: [{
+            label: 'Job Applications',
+            data: [{{ applied }}, {{ interview }}, {{ offer }}, {{ rejected }}],
+            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#e74a3b']
+        }]
+    }
 });
 </script>
   </body>
