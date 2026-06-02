@@ -11,7 +11,11 @@ with app.app_context():
 @app.route('/')
 def home():
     jobs=Job.query.all()
-    return render_template('home.html',jobs=jobs)
+    applied=Job.query.filter_by(status='Applied').count()
+    offer=Job.query.filter_by(status='Offer').count()
+    rejected=Job.query.filter_by(status='Rejected').count()
+    interview=Job.query.filter_by(status='Interview').count()
+    return render_template('home.html',jobs=jobs,applied=applied,rejected=rejected,offer=offer,interview=interview)
 
 @app.route('/add',methods=["GET","POST"])
 def add_job():

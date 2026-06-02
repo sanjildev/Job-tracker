@@ -5,6 +5,32 @@
   </head>
   <body>
     <h1>Job Tracker Dashboard</h1>
+    <div>
+    <div>
+        <h3>Applied</h3>
+        <p>{{ applied }}</p>
+    </div>
+    <div>
+        <h3>Interview</h3>
+        <p>{{ interview }}</p>
+    </div>
+    <div>
+        <h3>Offer</h3>
+        <p>{{ offer }}</p>
+    </div>
+    <div>
+        <h3>Rejected</h3>
+        <p>{{ rejected }}</p>
+    </div>
+</div>
+<input type="text" id="search" placeholder="Search by company...">
+<select id="filter">
+    <option value="">All</option>
+    <option value="Applied">Applied</option>
+    <option value="Interview">Interview</option>
+    <option value="Offer">Offer</option>
+    <option value="Rejected">Rejected</option>
+</select>
     <a href="/add">Add New Job</a>
 
     <table>
@@ -32,13 +58,37 @@
           <td>{{job.notes}}</td>
           <td>
             <a href="/delete/{{ job.id }}">Delete</a>
-          </td>
-            <td>
             <a href="/edit/{{ job.id }}">Edit</a>
-          </td>
+             </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    <script>
+document.getElementById('search').addEventListener('keyup', function() {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll('tbody tr');
+    rows.forEach(function(row) {
+        let company = row.cells[0].innerText.toLowerCase();
+        if (company.includes(value)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+document.getElementById('filter').addEventListener('change', function() {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll('tbody tr');
+    rows.forEach(function(row) {
+        let status = row.cells[2].innerText.toLowerCase();
+        if (value === '' || status.includes(value)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+</script>
   </body>
 </html>
