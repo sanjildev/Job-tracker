@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Job Tracker</title>
+  </head>
+  <body>
+    <h1>Job Tracker Dashboard</h1>
+    <a href="/add">Add New Job</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Date Applied</th>
+          <th>Deadline</th>
+          <th>Job Link</th>
+          <th>Notes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in jobs %}
+        <tr>
+          <td>{{ job.company }}</td>
+          <td>{{ job.role }}</td>
+          <td>{{ job.status }}</td>
+          <td>{{job.date_applied}}</td>
+          <td>{{job.deadline}}</td>
+          <td>{{job.job_link}}</td>
+          <td>{{job.notes}}</td>
+          <td>
+            <a href="/delete/{{ job.id }}">Delete</a>
+          </td>
+            <td>
+            <a href="/edit/{{ job.id }}">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

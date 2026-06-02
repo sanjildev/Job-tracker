@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Edit Job</h1>
+      <div class="form">
+        <form action="/edit/{{job.id}}" method="post">
+          <label for="company">Company Name*</label><br />
+          <input
+            type="text"
+            name="company"
+            id=""
+            required
+            placeholder="e.g. Google"
+            value="{{job.company}}"
+          />
+          <label for="role">Role*</label
+          ><input
+            type="text"
+            name="role"
+            id=""
+            required
+            placeholder="e.g. SWE Intern"
+            value="{{job.role}}"
+          /><br /><br />
+          <label for="status">Status*</label>
+          <select name="status">
+    <option value="Applied" {% if job.status == 'Applied' %}selected{% endif %}>Applied</option>
+    <option value="Interview" {% if job.status == 'Interview' %}selected{% endif %}>Interview</option>
+    <option value="Offer" {% if job.status == 'Offer' %}selected{% endif %}>Offer</option>
+    <option value="Rejected" {% if job.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+</select>
+          <br /><br />
+          <label for="date_applied">Date Applied</label>
+          <input
+            type="date"
+            name="date_applied"
+            id=""
+            value="{{job.date_applied}}"
+          /><br /><br />
+          <label for="deadline">Deadline</label>
+          <input
+            type="date"
+            name="deadline"
+            id=""
+            value="{{job.deadline}}"
+          /><br /><br />
+          <label for="job_link">Job Link</label>
+          <input
+            type="text"
+            name="job_link"
+            id=""
+            placeholder="https://..."
+            value="{{job.job_link}}"
+          /><br /><br />
+          <label for="notes">Notes</label>
+          <textarea
+            name="notes"
+            placeholder="Any extra infp,referrals,contacts..."
+          >
+{{job.notes}}</textarea
+          ><br /><br />
+          <a href="/">Cancel</a>
+          <input type="submit" value="Update job" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
