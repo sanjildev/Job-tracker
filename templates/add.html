@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Add New Job</h1>
+      <div class="form">
+        <form action="/add" method="post">
+         <label for="company">Company Name*</label><br>
+         <input type="text" name="company" id="" required placeholder="e.g. Google">
+                   <label for="role">Role*</label><input type="text" name="role" id="" required placeholder="e.g. SWE Intern"><br><br>
+         <label for="status">Status*</label>
+         <select name="status">
+  <option value="Applied">Applied</option>
+  <option value="Interview">Interview</option>
+  <option value="Offer">Offer</option>
+ <option value="Rejected">Rejected</option>
+</select> <br><br>
+<label for="date_applied">Date Applied</label>
+<input type="date" name="date_applied" id=""><br><br>
+<label for="deadline">Deadline</label>
+<input type="date" name="deadline" id=""><br><br>
+<label for="job_link">Job Link</label>
+<input type="text" name="job_link" id="" placeholder="https://..."><br><br>
+<label for="notes">Notes</label>
+<textarea name="notes" placeholder="Any extra infp,referrals,contacts..."></textarea><br><br>
+<a href="/">Cancel</a>
+<input type="submit" value="Add job">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
